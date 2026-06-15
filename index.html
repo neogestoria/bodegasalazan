@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bodegas Alazán | Rincón de Soto, La Rioja</title>
+  <meta name="description" content="Bodegas Alazán, bodega en Rincón de Soto dedicada a la elaboración, almacenamiento y comercialización de vinos cosecheros, embotellados, a granel y Bag in Box.">
+  <style>
+    :root {
+      --ink: #201816;
+      --muted: #6d625d;
+      --paper: #fbfaf7;
+      --soft: #f1ece4;
+      --line: #ded4c7;
+      --wine: #7f1823;
+      --wine-dark: #4d1018;
+      --leaf: #526044;
+      --gold: #b98b49;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(43, 24, 20, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px clamp(18px, 4vw, 56px);
+      color: var(--white);
+      background: linear-gradient(180deg, rgba(18, 12, 10, .74), rgba(18, 12, 10, .12));
+    }
+
+    .brand {
+      display: grid;
+      gap: 0;
+      line-height: 1.05;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .brand span:first-child {
+      font-size: 14px;
+    }
+
+    .brand span:last-child {
+      font-size: 26px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px 18px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    nav a {
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      border-color: var(--gold);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(20, 11, 10, .88) 0%, rgba(20, 11, 10, .56) 48%, rgba(20, 11, 10, .2) 100%),
+        url("assets/foto-01.jpg") center / cover;
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 150px 0 72px;
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: #f1d7a7;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 8vw, 98px);
+      line-height: .95;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, .9);
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .actions,
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      background: var(--gold);
+      color: #1d130f;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .62);
+    }
+
+    .button.dark {
+      color: var(--white);
+      background: var(--wine);
+      border-color: var(--wine);
+    }
+
+    .section {
+      padding: clamp(56px, 8vw, 98px) clamp(18px, 4vw, 56px);
+    }
+
+    .section.soft {
+      background: var(--soft);
+    }
+
+    .section.dark {
+      background: var(--wine-dark);
+      color: var(--white);
+    }
+
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .84fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .split.reverse {
+      grid-template-columns: minmax(320px, .88fr) minmax(0, 1fr);
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .dark .lead {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .quote {
+      padding-left: 20px;
+      border-left: 4px solid var(--gold);
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .photo {
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      background: #ddd;
+    }
+
+    .photo img {
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      min-height: 122px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .58);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .catalog-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .catalog-head p {
+      max-width: 520px;
+      margin-bottom: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: 0 10px 26px rgba(43, 24, 20, .08);
+    }
+
+    .product-image {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1 / 1.05;
+      padding: 18px;
+      background: linear-gradient(180deg, #f8f4ed, #ebe0d1);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px;
+    }
+
+    .tag {
+      width: fit-content;
+      padding: 4px 8px;
+      border-radius: 3px;
+      background: #efe4d2;
+      color: var(--wine-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin-bottom: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .feature-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      min-height: 220px;
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .feature h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .feature p {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .bib-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .bib-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+    }
+
+    .bib-card img {
+      aspect-ratio: 1 / .88;
+      object-fit: contain;
+      padding: 14px;
+      background: #f7f2ea;
+    }
+
+    .bib-card div {
+      padding: 16px;
+    }
+
+    .bib-card h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.15;
+    }
+
+    .bib-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, .86fr) minmax(320px, 1fr);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      padding: clamp(28px, 4vw, 42px);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list strong {
+      display: block;
+      color: var(--wine);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .map {
+      min-height: 420px;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #e8e0d4;
+    }
+
+    .map iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+    }
+
+    footer {
+      padding: 34px clamp(18px, 4vw, 56px);
+      color: rgba(255, 255, 255, .72);
+      background: #1d1311;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    @media (max-width: 1020px) {
+      .topbar {
+        position: absolute;
+        align-items: flex-start;
+        flex-direction: column;
+        background: rgba(18, 12, 10, .72);
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .split,
+      .split.reverse,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .bib-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .feature-band,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        padding: 14px 18px;
+      }
+
+      .brand span:last-child {
+        font-size: 22px;
+      }
+
+      nav {
+        gap: 4px 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-inner {
+        padding-top: 210px;
+        padding-bottom: 44px;
+      }
+
+      .catalog-head {
+        display: block;
+      }
+
+      .grid,
+      .bib-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo img {
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Bodegas Alazán">
+      <span>Bodegas</span>
+      <span>Alazán</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#bodega">Bodega</a>
+      <a href="#instalaciones">Instalaciones</a>
+      <a href="#vinos">Vinos</a>
+      <a href="#bag-in-box">Bag in Box</a>
+      <a href="#granel">A granel</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-label="Bodegas Alazán en Rincón de Soto">
+      <div class="hero-inner">
+        <p class="kicker">Rincón de Soto · La Rioja</p>
+        <h1>Vinos cosecheros con raíz riojana</h1>
+        <p class="hero-copy">Elaboración, almacenamiento y comercialización de vinos de mesa, embotellados, Bag in Box y vino a granel desde el valle del Ebro.</p>
+        <div class="actions">
+          <a class="button" href="#vinos">Ver vinos</a>
+          <a class="button secondary" href="#contacto">Contactar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bodega">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Desde 2003</p>
+          <h2 class="section-title">Una bodega joven con cultura de vino</h2>
+          <p class="lead">Bodegas Alazán nace en Rincón de Soto impulsada por jóvenes unidos al cultivo de la vid y al vino del valle del Ebro.</p>
+          <p>La bodega trabaja en la elaboración, almacenamiento y comercialización de vinos de mesa y vinos cosecheros, tanto embotellados como a granel, con presencia en el mercado nacional e internacional, principalmente en países europeos.</p>
+          <p class="quote">“Entre las viñas, trota alazán y llena copa, vino rojizo y canela en un brindis, tinto, rosado y blanco”.</p>
+        </div>
+        <figure class="photo">
+          <img src="assets/foto-02.jpg" alt="Imagen corporativa de Bodegas Alazán">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section soft" id="instalaciones">
+      <div class="wrap split reverse">
+        <figure class="photo">
+          <img src="assets/foto-03.jpg" alt="Instalaciones de Bodegas Alazán">
+        </figure>
+        <div>
+          <p class="kicker">Instalaciones</p>
+          <h2 class="section-title">Capacidad, control y tecnología</h2>
+          <p class="lead">La bodega cuenta con capacidad de almacenamiento de 1.500.000 litros en depósitos de acero inoxidable.</p>
+          <p>Su proceso incorpora tecnología moderna para el tratamiento del vino, con especial atención a la filtración tangencial, que permite trabajar con esterilidad en un solo paso y sin residuos sólidos.</p>
+          <div class="stats">
+            <div class="stat">
+              <strong>2003</strong>
+              <span>Inicio de actividad</span>
+            </div>
+            <div class="stat">
+              <strong>1,5 M</strong>
+              <span>Litros de capacidad</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>Marcas embotelladas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vinos">
+      <div class="wrap">
+        <div class="catalog-head">
+          <div>
+            <p class="kicker">Catálogo</p>
+            <h2 class="section-title">Vinos embotellados</h2>
+          </div>
+          <p class="lead">Alazán, Campo Bajo y Venta Blancas forman la base comercial de una bodega orientada a vinos cercanos, honestos y fáciles de disfrutar.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-13.jpg" alt="Botella Alazán Blanco">
+            </div>
+            <div class="card-body">
+              <span class="tag">Alazán</span>
+              <h3>Blanco</h3>
+              <p>Amarillo ámbar limpio y brillante, con aromas de flores blancas, frutas y matices especiados. Sedoso, seco y con buen final.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-11.jpg" alt="Botella Alazán Rosado">
+            </div>
+            <div class="card-body">
+              <span class="tag">Alazán</span>
+              <h3>Rosado</h3>
+              <p>Color salmón pálido, nariz intensa y notas frutales. Seco, vivo y alegre en boca.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-12.jpg" alt="Botella Alazán Tinto">
+            </div>
+            <div class="card-body">
+              <span class="tag">Alazán</span>
+              <h3>Tinto</h3>
+              <p>Color rubí, aromas de cereza, ciruela, mora y arándano. Seco, con taninos suaves y recuerdos de frutas rojas.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-10.jpg" alt="Botella Semi Crianza">
+            </div>
+            <div class="card-body">
+              <span class="tag">Alazán</span>
+              <h3>Semi Crianza</h3>
+              <p>Color granate teja, aromas tostados y de roble procedentes de la crianza. Suave, seco y agradable.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-14.jpg" alt="Botella Campo Bajo Tinto">
+            </div>
+            <div class="card-body">
+              <span class="tag">Campo Bajo</span>
+              <h3>Tinto</h3>
+              <p>Atractivo rubí a la vista, intenso en nariz, seco y suave en taninos.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-16.jpg" alt="Botella Campo Bajo Blanco">
+            </div>
+            <div class="card-body">
+              <span class="tag">Campo Bajo</span>
+              <h3>Blanco</h3>
+              <p>Ámbar limpio y brillante, con aromas de frutas, flores blancas y matices tostados.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-15.jpg" alt="Botella Campo Bajo Rosado">
+            </div>
+            <div class="card-body">
+              <span class="tag">Campo Bajo</span>
+              <h3>Rosado</h3>
+              <p>Tono salmón suave, aromas frutales intensos y una boca seca, alegre y chispeante.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="product-image">
+              <img src="assets/foto-04.jpg" alt="Vinos Bodegas Alazán">
+            </div>
+            <div class="card-body">
+              <span class="tag">Venta Blancas</span>
+              <h3>Marca propia</h3>
+              <p>Una de las marcas embotelladas por Bodegas Alazán para completar su gama comercial.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="granel">
+      <div class="wrap">
+        <div class="catalog-head">
+          <div>
+            <p class="kicker">Venta a granel</p>
+            <h2 class="section-title">Vino para mercado nacional e internacional</h2>
+          </div>
+          <p class="lead">Bodegas Alazán comercializa vino a granel manteniendo el cuidado en el embotellado, la conservación y la seguridad durante el transporte.</p>
+        </div>
+        <div class="feature-band">
+          <article class="feature">
+            <h3>Cosechero</h3>
+            <p>Vinos de mesa del año con una propuesta directa y de buena relación entre calidad y precio.</p>
+          </article>
+          <article class="feature">
+            <h3>Tratamiento</h3>
+            <p>Filtración tangencial y depósitos de acero inoxidable para conservar las cualidades del producto.</p>
+          </article>
+          <article class="feature">
+            <h3>Transporte</h3>
+            <p>Atención al envasado y a la seguridad logística para que el vino llegue en buenas condiciones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="bag-in-box">
+      <div class="wrap">
+        <div class="catalog-head">
+          <div>
+            <p class="kicker">Formatos prácticos</p>
+            <h2 class="section-title">Bag in Box</h2>
+          </div>
+          <p class="lead">Formatos de 5 y 15 litros con bolsa hermética y grifo, pensados para conservar el vino y facilitar el servicio.</p>
+        </div>
+
+        <div class="bib-grid">
+          <article class="bib-card">
+            <img src="assets/foto-07.jpg" alt="Bag in Box Alazán 5 litros">
+            <div>
+              <h3>Alazán 5 L</h3>
+              <p>Tinto y rosado en formato práctico para vino cosechero a granel.</p>
+            </div>
+          </article>
+          <article class="bib-card">
+            <img src="assets/foto-06.jpg" alt="Bag in Box Kraft 15 litros">
+            <div>
+              <h3>Kraft 15 L</h3>
+              <p>Formato grande en tinto y rosado para consumo habitual.</p>
+            </div>
+          </article>
+          <article class="bib-card">
+            <img src="assets/foto-09.jpg" alt="Bag in Box Kraft 5 litros">
+            <div>
+              <h3>Kraft 5 L</h3>
+              <p>Tinto, rosado y blanco en una presentación manejable.</p>
+            </div>
+          </article>
+          <article class="bib-card">
+            <img src="assets/foto-08.jpg" alt="Bag in Box Madera 15 litros">
+            <div>
+              <h3>Madera 15 L</h3>
+              <p>Tinto y rosado en caja con acabado de madera.</p>
+            </div>
+          </article>
+          <article class="bib-card">
+            <img src="assets/foto-05.jpg" alt="Bag in Box Madera 5 litros">
+            <div>
+              <h3>Madera 5 L</h3>
+              <p>Tinto, rosado y blanco con bolsa hermética y grifo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="wrap contact">
+        <div class="contact-panel">
+          <p class="kicker">Contacto</p>
+          <h2 class="section-title">Hablemos de vino</h2>
+          <ul class="contact-list">
+            <li>
+              <strong>Dirección</strong>
+              Polígono Industrial Martín Grande, calle 3, parcela R, Rincón de Soto, La Rioja
+            </li>
+            <li>
+              <strong>Teléfono</strong>
+              <a href="tel:+34941141796">941 141 796</a>
+            </li>
+            <li>
+              <strong>Email</strong>
+              <a href="mailto:alazan@bodegasalazan.com">alazan@bodegasalazan.com</a>
+            </li>
+          </ul>
+          <div class="contact-actions">
+            <a class="button dark" href="tel:+34941141796">Llamar</a>
+            <a class="button dark" href="mailto:alazan@bodegasalazan.com">Enviar email</a>
+            <a class="button dark" href="https://maps.app.goo.gl/QmhLVAS9Sdxj97Cx8" target="_blank" rel="noopener">Ver mapa</a>
+          </div>
+        </div>
+        <div class="map" aria-label="Mapa de Bodegas Alazán">
+          <iframe title="Mapa de Bodegas Alazán en Rincón de Soto" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=42.2284766,-1.8642701&z=17&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <strong>Bodegas Alazán S.L. · Rincón de Soto, La Rioja</strong>
+      <div class="legal">
+        <span>Aviso legal</span>
+        <span>Privacidad</span>
+        <span>Vinos de mesa · Vino cosechero</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
